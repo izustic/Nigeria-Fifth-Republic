@@ -1,0 +1,2662 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Proposed Constitutional Framework — Federal Republic of Nigeria
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Josefin+Sans:wght@200;300;400;600;700&family=IM+Fell+English:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1a1208;
+        --parchment: #f7f2e8;
+        --parchment-dark: #ede6d3;
+        --parchment-mid: #f0ead8;
+        --gold: #b8860b;
+        --gold-light: #d4a843;
+        --gold-pale: #f5e6b8;
+        --green: #1a3a2a;
+        --green-mid: #2d5a3f;
+        --green-light: #3d7a55;
+        --red-deep: #8b1a1a;
+        --border: rgba(184, 134, 11, 0.3);
+        --shadow: rgba(26, 18, 8, 0.15);
+      }
+      se * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 17px;
+        line-height: 1.8;
+        overflow-x: hidden;
+      }
+
+      /* Grain texture overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1000;
+        opacity: 0.5;
+      }
+
+      /* ── COVER ── */
+      .cover {
+        min-height: 100vh;
+        background: var(--green);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 80px 40px;
+      }
+
+      .cover-bg-pattern {
+        position: absolute;
+        inset: 0;
+        background-image:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 40px,
+            rgba(184, 134, 11, 0.04) 40px,
+            rgba(184, 134, 11, 0.04) 41px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 40px,
+            rgba(184, 134, 11, 0.04) 40px,
+            rgba(184, 134, 11, 0.04) 41px
+          );
+      }
+
+      .cover-eagle {
+        height: 100px;
+        margin-bottom: 32px;
+        opacity: 0.9;
+        animation: fadeDown 1.2s ease both;
+      }
+
+      .cover-rule-top {
+        width: 320px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin-bottom: 28px;
+        animation: fadeIn 1.4s ease both 0.2s;
+      }
+
+      .cover-label {
+        font-family: "Josefin Sans", sans-serif;
+        font-weight: 300;
+        font-size: 11px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 20px;
+        animation: fadeIn 1.4s ease both 0.3s;
+      }
+
+      .cover-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(36px, 6vw, 72px);
+        font-weight: 300;
+        color: var(--parchment);
+        text-align: center;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+        animation: fadeIn 1.4s ease both 0.4s;
+      }
+
+      .cover-subtitle {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(18px, 3vw, 28px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--gold-light);
+        text-align: center;
+        margin-bottom: 48px;
+        animation: fadeIn 1.4s ease both 0.5s;
+      }
+
+      .cover-rule-bottom {
+        width: 220px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin-bottom: 32px;
+        animation: fadeIn 1.4s ease both 0.6s;
+      }
+
+      .cover-meta {
+        display: flex;
+        gap: 60px;
+        animation: fadeIn 1.4s ease both 0.7s;
+      }
+
+      .cover-meta-item {
+        text-align: center;
+      }
+
+      .cover-meta-item .label {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .cover-meta-item .value {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 14px;
+        color: rgba(247, 242, 232, 0.7);
+      }
+
+      .cover-flags {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        display: flex;
+      }
+      .cover-flags span:nth-child(1) {
+        flex: 1;
+        background: var(--green-light);
+      }
+      .cover-flags span:nth-child(2) {
+        flex: 1;
+        background: #fff;
+      }
+      .cover-flags span:nth-child(3) {
+        flex: 1;
+        background: var(--green-light);
+      }
+
+      /* ── PAGE LAYOUT ── */
+      .page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 80px 60px;
+      }
+
+      @media (max-width: 700px) {
+        .page {
+          padding: 48px 24px;
+        }
+      }
+
+      /* ── CHAPTER HEADER ── */
+      .chapter-header {
+        margin: 80px 0 40px;
+        position: relative;
+        padding-top: 24px;
+      }
+
+      .chapter-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 64px;
+        height: 3px;
+        background: var(--gold);
+      }
+
+      .chapter-number {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .chapter-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(28px, 4vw, 44px);
+        font-weight: 600;
+        color: var(--green);
+        line-height: 1.15;
+      }
+
+      .chapter-rule {
+        margin-top: 20px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--gold), transparent);
+      }
+
+      /* ── SECTION HEADER ── */
+      .section-header {
+        margin: 52px 0 16px;
+      }
+
+      .section-title {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--green-mid);
+        border-left: 3px solid var(--gold);
+        padding-left: 14px;
+      }
+
+      .article-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--ink);
+        margin: 36px 0 12px;
+      }
+
+      .article-title em {
+        font-style: normal;
+        color: var(--gold);
+      }
+
+      /* ── BODY TEXT ── */
+      p {
+        margin-bottom: 18px;
+        font-size: 17px;
+        line-height: 1.85;
+        color: #2a2010;
+      }
+
+      .lead {
+        font-size: 19px;
+        font-style: italic;
+        color: var(--green-mid);
+        border-left: 2px solid var(--gold);
+        padding: 12px 20px;
+        margin: 24px 0;
+        background: rgba(184, 134, 11, 0.05);
+      }
+
+      /* ── LISTS ── */
+      ul,
+      ol {
+        margin: 12px 0 20px 0;
+        padding-left: 28px;
+      }
+
+      li {
+        margin-bottom: 8px;
+        line-height: 1.7;
+      }
+
+      ul li::marker {
+        color: var(--gold);
+      }
+      ol li::marker {
+        color: var(--green-mid);
+        font-weight: 600;
+      }
+
+      /* ── CALLOUT BOX ── */
+      .callout {
+        background: var(--green);
+        color: var(--parchment);
+        padding: 28px 32px;
+        margin: 32px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .callout::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--gold);
+      }
+
+      .callout-label {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .callout p {
+        color: var(--parchment);
+        margin: 0;
+        font-size: 16px;
+      }
+
+      /* ── SCENARIO CARD ── */
+      .scenario-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 28px 0;
+      }
+
+      .scenario-card {
+        border: 1px solid var(--border);
+        padding: 24px;
+        background: var(--parchment-mid);
+        position: relative;
+      }
+
+      .scenario-card::before {
+        content: attr(data-num);
+        position: absolute;
+        top: -16px;
+        left: 20px;
+        background: var(--green);
+        color: var(--gold-light);
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 2px;
+        padding: 4px 12px;
+        text-transform: uppercase;
+      }
+
+      .scenario-card h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--green);
+        margin-bottom: 12px;
+      }
+
+      .scenario-card p {
+        font-size: 15px;
+        margin: 0;
+      }
+
+      /* ── ROTATION TIMELINE ── */
+      .rotation-timeline {
+        margin: 32px 0;
+        position: relative;
+      }
+
+      .rotation-track {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .rotation-item {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .rotation-item-left {
+        width: 220px;
+        min-width: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 24px;
+        padding-bottom: 4px;
+        padding-top: 4px;
+      }
+
+      .rotation-item-left span {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: var(--green-mid);
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      .rotation-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40px;
+        min-width: 40px;
+      }
+
+      .rotation-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--gold);
+        border: 2px solid var(--gold);
+        flex-shrink: 0;
+        margin: auto 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      .rotation-line {
+        flex: 1;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--gold),
+          rgba(184, 134, 11, 0.3)
+        );
+        min-height: 24px;
+      }
+
+      .rotation-item-right {
+        flex: 1;
+        padding: 10px 0 10px 24px;
+        display: flex;
+        align-items: center;
+      }
+
+      .rotation-num {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: var(--gold);
+        margin-right: 10px;
+        min-width: 24px;
+      }
+
+      .rotation-states {
+        font-size: 14px;
+        color: #5a4a2a;
+        font-style: italic;
+      }
+
+      /* ── FISCAL CHART ── */
+      .fiscal-visual {
+        margin: 32px 0;
+        background: var(--parchment-dark);
+        border: 1px solid var(--border);
+        padding: 36px;
+      }
+
+      .fiscal-title {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .fiscal-bars {
+        display: flex;
+        gap: 40px;
+        align-items: flex-end;
+        justify-content: center;
+        height: 160px;
+        margin-bottom: 16px;
+      }
+
+      .fiscal-bar-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .fiscal-bar-wrap {
+        display: flex;
+        gap: 6px;
+        align-items: flex-end;
+        height: 140px;
+      }
+
+      .fiscal-bar {
+        width: 36px;
+        border-radius: 2px 2px 0 0;
+        position: relative;
+        transition: opacity 0.2s;
+      }
+
+      .fiscal-bar:hover {
+        opacity: 0.85;
+      }
+
+      .fiscal-bar .bar-label {
+        position: absolute;
+        top: -22px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .bar-regional {
+        background: var(--green-mid);
+      }
+      .bar-federal {
+        background: var(--gold);
+      }
+
+      .fiscal-phase-label {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--green-mid);
+        text-align: center;
+      }
+
+      .fiscal-legend {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+
+      .legend-swatch {
+        width: 16px;
+        height: 16px;
+        border-radius: 2px;
+      }
+
+      /* ── POWERS GRID ── */
+      .powers-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 28px 0;
+      }
+
+      .powers-card {
+        padding: 24px;
+        border: 1px solid var(--border);
+      }
+
+      .powers-card.federal {
+        background: var(--green);
+        color: var(--parchment);
+      }
+
+      .powers-card.regional {
+        background: var(--parchment-dark);
+      }
+
+      .powers-card-title {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .powers-card.federal .powers-card-title {
+        color: var(--gold-light);
+      }
+      .powers-card.regional .powers-card-title {
+        color: var(--green-mid);
+      }
+
+      .powers-card ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      .powers-card.federal ul li {
+        color: rgba(247, 242, 232, 0.85);
+        font-size: 15px;
+      }
+      .powers-card.regional ul li {
+        color: #2a2010;
+        font-size: 15px;
+      }
+      .powers-card.federal ul li::marker {
+        color: var(--gold-light);
+      }
+
+      /* ── KPI TABLE ── */
+      .kpi-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 28px 0;
+        font-size: 15px;
+      }
+
+      .kpi-table thead tr {
+        background: var(--green);
+        color: var(--parchment);
+      }
+
+      .kpi-table thead th {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 12px 16px;
+        text-align: left;
+        color: var(--gold-light);
+      }
+
+      .kpi-table tbody tr {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .kpi-table tbody tr:nth-child(even) {
+        background: var(--parchment-dark);
+      }
+
+      .kpi-table tbody td {
+        padding: 12px 16px;
+        vertical-align: top;
+      }
+
+      .kpi-tag {
+        display: inline-block;
+        background: var(--green);
+        color: var(--gold-light);
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 9px;
+        letter-spacing: 1px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        text-transform: uppercase;
+      }
+
+      /* ── JUDICIARY HIERARCHY ── */
+      .hierarchy {
+        margin: 28px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .hierarchy-level {
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hierarchy-box {
+        width: 100%;
+        padding: 14px 24px;
+        text-align: center;
+        border: 1px solid var(--border);
+        position: relative;
+      }
+
+      .hierarchy-box.top {
+        background: var(--green);
+        color: var(--parchment);
+        width: 60%;
+      }
+
+      .hierarchy-box.mid {
+        background: var(--parchment-dark);
+        width: 75%;
+      }
+
+      .hierarchy-box.lower {
+        background: var(--parchment-mid);
+        width: 88%;
+      }
+
+      .hierarchy-box.base {
+        background: var(--parchment);
+        width: 100%;
+      }
+
+      .hierarchy-box-title {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .hierarchy-box.top .hierarchy-box-title {
+        color: var(--gold-light);
+      }
+      .hierarchy-box:not(.top) .hierarchy-box-title {
+        color: var(--green-mid);
+      }
+
+      .hierarchy-box-sub {
+        font-size: 13px;
+        font-style: italic;
+        margin-top: 2px;
+        opacity: 0.7;
+      }
+
+      .hierarchy-connector {
+        width: 2px;
+        height: 20px;
+        background: linear-gradient(
+          to bottom,
+          var(--gold),
+          rgba(184, 134, 11, 0.3)
+        );
+      }
+
+      /* ── MAP SECTION ── */
+      .map-container {
+        margin: 32px 0;
+        background: var(--parchment-dark);
+        border: 1px solid var(--border);
+        padding: 32px;
+        position: relative;
+      }
+
+      .map-title {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .map-layout {
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+      }
+
+      .map-svg-wrap {
+        flex: 1;
+        min-width: 0;
+      }
+      .map-svg-wrap img {
+        width: 500px;
+        height: auto;
+      }
+
+      .map-legend {
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .map-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: default;
+      }
+
+      .map-legend-swatch {
+        width: 18px;
+        height: 18px;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+
+      .map-legend-text {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--green-mid);
+      }
+
+      .map-legend-states {
+        font-size: 12px;
+        font-style: italic;
+        color: #7a6a4a;
+        font-family: "Cormorant Garamond", serif;
+        line-height: 1.3;
+      }
+
+      /* ── DIVIDER ── */
+      .chapter-divider {
+        margin: 64px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .chapter-divider::before,
+      .chapter-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border),
+          transparent
+        );
+      }
+
+      .chapter-divider-symbol {
+        color: var(--gold);
+        font-size: 18px;
+      }
+
+      /* ── QUOTE ── */
+      .blockquote {
+        border-left: 3px solid var(--gold);
+        padding: 16px 24px;
+        margin: 28px 0;
+        background: rgba(184, 134, 11, 0.06);
+        font-style: italic;
+        font-size: 18px;
+        color: var(--green-mid);
+      }
+
+      /* ── TRANSPARENCY TABLE ── */
+      .access-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 28px 0;
+      }
+
+      .access-card {
+        border: 1px solid var(--border);
+        padding: 20px;
+        text-align: center;
+        background: var(--parchment-mid);
+      }
+
+      .access-icon {
+        font-size: 28px;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .access-card-title {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--green-mid);
+        margin-bottom: 6px;
+      }
+
+      .access-card p {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      /* ── LEGISLATURE CHAMBERS ── */
+      .chambers-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin: 28px 0;
+        border: 1px solid var(--border);
+      }
+
+      .chamber {
+        padding: 28px;
+      }
+
+      .chamber-a {
+        background: var(--green);
+        border-right: 1px solid var(--gold);
+      }
+
+      .chamber-b {
+        background: var(--parchment-dark);
+      }
+
+      .chamber-name {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .chamber-a .chamber-name {
+        color: var(--gold-light);
+      }
+      .chamber-b .chamber-name {
+        color: var(--gold);
+      }
+
+      .chamber-full-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .chamber-a .chamber-full-name {
+        color: var(--parchment);
+      }
+      .chamber-b .chamber-full-name {
+        color: var(--green);
+      }
+
+      .chamber-detail {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .chamber-a .chamber-detail {
+        color: rgba(247, 242, 232, 0.8);
+      }
+      .chamber-b .chamber-detail {
+        color: #2a2010;
+      }
+
+      /* ── TRANSITION TIMELINE ── */
+      .transition-phases {
+        display: flex;
+        gap: 0;
+        margin: 28px 0;
+        border: 1px solid var(--border);
+        overflow: hidden;
+      }
+
+      .transition-phase {
+        flex: 1;
+        padding: 24px 20px;
+        border-right: 1px solid var(--border);
+        text-align: center;
+      }
+
+      .transition-phase:last-child {
+        border-right: none;
+      }
+
+      .transition-phase:nth-child(1) {
+        background: var(--green);
+      }
+      .transition-phase:nth-child(2) {
+        background: var(--green-mid);
+      }
+      .transition-phase:nth-child(3) {
+        background: var(--green-light);
+      }
+
+      .phase-years {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--gold-light);
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .phase-name {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(247, 242, 232, 0.7);
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .phase-detail {
+        font-size: 13px;
+        color: rgba(247, 242, 232, 0.75);
+        line-height: 1.5;
+      }
+
+      /* ── CONCLUSION ── */
+      .conclusion {
+        background: var(--green);
+        color: var(--parchment);
+        padding: 60px;
+        margin: 80px 0 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .conclusion::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--green-light),
+          var(--gold),
+          var(--green-light)
+        );
+      }
+
+      .conclusion-quote {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(20px, 3vw, 30px);
+        font-style: italic;
+        font-weight: 300;
+        line-height: 1.5;
+        color: var(--parchment);
+        max-width: 700px;
+        margin: 0 auto 32px;
+      }
+
+      .conclusion-rule {
+        width: 80px;
+        height: 1px;
+        background: var(--gold);
+        margin: 0 auto 20px;
+      }
+
+      .conclusion-note {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold-light);
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── FOOTNOTE ── */
+      .footnote {
+        font-size: 13px;
+        font-style: italic;
+        color: #7a6a4a;
+        border-top: 1px solid var(--border);
+        padding-top: 12px;
+        margin-top: 24px;
+      }
+
+      @media (max-width: 620px) {
+        .powers-grid,
+        .chambers-compare,
+        .access-grid {
+          grid-template-columns: 1fr;
+        }
+        .map-layout {
+          flex-direction: column;
+        }
+        .transition-phases {
+          flex-direction: column;
+        }
+        .scenario-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════ COVER ══════════════════════ -->
+    <div class="cover">
+      <div class="cover-bg-pattern"></div>
+
+      <!-- Eagle SVG emblem -->
+      <img
+        src="assets/Coat_of_arms_of_Nigeria.svg.png"
+        alt="Nigerian Coat of Arms"
+        class="cover-eagle"
+      />
+      <!-- <svg
+        class="cover-eagle"
+        viewBox="0 0 100 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="50"
+          cy="50"
+          r="46"
+          stroke="#b8860b"
+          stroke-width="1.5"
+          fill="none"
+          opacity="0.5"
+        />
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          stroke="#b8860b"
+          stroke-width="0.75"
+          fill="none"
+          opacity="0.3"
+        />
+      
+        <ellipse cx="50" cy="54" rx="12" ry="16" fill="#b8860b" opacity="0.9" />
+        
+        <path
+          d="M38 52 Q20 42 14 54 Q22 56 30 52 Q34 58 38 58Z"
+          fill="#b8860b"
+          opacity="0.85"
+        />
+        <path
+          d="M62 52 Q80 42 86 54 Q78 56 70 52 Q66 58 62 58Z"
+          fill="#b8860b"
+          opacity="0.85"
+        />
+        
+        <circle cx="50" cy="40" r="8" fill="#b8860b" opacity="0.9" />
+        
+        <path d="M50 45 L54 48 L50 47Z" fill="#1a3a2a" />
+    
+        <path d="M46 70 L50 78 L54 70 L50 72Z" fill="#b8860b" opacity="0.8" />
+      
+        <text
+          x="50"
+          y="34"
+          text-anchor="middle"
+          font-size="6"
+          fill="#f7f2e8"
+          opacity="0.6"
+        >
+          ★ ★ ★
+        </text>
+      </svg> -->
+
+      <div class="cover-rule-top"></div>
+      <div class="cover-label">Draft Fifth Republic Constitutional Framework — 2025</div>
+
+      <div class="cover-title">Proposed Constitutional Framework</div>
+      <div class="cover-subtitle">
+        for a Restructured Federal Republic of Nigeria
+      </div>
+
+      <div class="cover-rule-bottom"></div>
+
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <span class="label">Regions</span>
+          <span class="value">Eight + FCT</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="label">Structure</span>
+          <span class="value">Federal Republic</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="label">Governance</span>
+          <span class="value">KPI-Driven</span>
+        </div>
+      </div>
+
+      <div class="cover-flags"><span></span><span></span><span></span></div>
+    </div>
+
+    <!-- ══════════════════════ DOCUMENT BODY ══════════════════════ -->
+    <div class="page">
+      <!-- Preamble -->
+      <div class="chapter-header">
+        <span class="chapter-number">Preamble</span>
+        <h1 class="chapter-title">Foundation of a New Constitutional Order</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p class="lead">
+        We, the peoples of the Federal Republic of Nigeria, recognizing the
+        diversity of our civilizations, ethnicities, cultures, languages,
+        religions, and historical experiences, hereby establish a new
+        constitutional order.
+      </p>
+
+      <p>
+        This order is founded upon regional balance, accountable governance,
+        measurable public administration, economic decentralization,
+        institutional continuity, national sovereignty, and competitive federal
+        development. This framework is not merely a legal document — it is a
+        covenant between the state and its peoples, binding governance to
+        performance, binding power to accountability, and binding unity to the
+        recognition of diversity.
+      </p>
+
+      <p>
+        Nigeria's federalism has, historically, tilted toward
+        over-centralization — concentrating power and revenue at the federal
+        level while leaving regions with limited capacity to develop
+        autonomously. The constitutional framework proposed herein corrects this
+        imbalance through a restructured federation in which the Federal
+        Government retains its sovereign functions while regions acquire genuine
+        economic, administrative, and developmental autonomy.
+      </p>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- Federal Structure -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter I</span>
+        <h1 class="chapter-title">Federal Structure</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        The Federal Republic of Nigeria shall consist of eight constitutional
+        regions and the Federal Capital Territory (Abuja), which shall serve as
+        the seat of the Federal Government. Each region groups geographically
+        contiguous states with shared socioeconomic and cultural
+        characteristics, forming a unit capable of autonomous governance and
+        development.
+      </p>
+
+      <!-- MAP -->
+      <div class="map-container">
+        <div class="map-title">
+          The Eight Constitutional Regions of the Federal Republic of Nigeria
+        </div>
+        <div class="map-layout">
+          <div class="map-svg-wrap">
+            <img src="assets/map.png" alt="map" />
+          </div>
+
+          <!-- Legend -->
+          <div class="map-legend">
+            <div
+              style="
+                font-family: &quot;Josefin Sans&quot;, sans-serif;
+                font-size: 9px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 8px;
+              "
+            >
+              Regions
+            </div>
+
+            <div class="map-legend-item">
+              <div class="map-legend-swatch" style="background: #2d5a3f"></div>
+              <div>
+                <div class="map-legend-text">North West</div>
+                <div class="map-legend-states">
+                  Kano, Kaduna, Sokoto, Katsina, Kebbi, Zamfara, Jigawa
+                </div>
+              </div>
+            </div>
+            <div class="map-legend-item">
+              <div class="map-legend-swatch" style="background: #1a3a2a"></div>
+              <div>
+                <div class="map-legend-text">North East</div>
+                <div class="map-legend-states">
+                  Borno, Yobe, Bauchi, Gombe, Adamawa
+                </div>
+              </div>
+            </div>
+            <div class="map-legend-item">
+              <div class="map-legend-swatch" style="background: #3d7a55"></div>
+              <div>
+                <div class="map-legend-text">Central West</div>
+                <div class="map-legend-states">Kwara, Niger, Kogi</div>
+              </div>
+            </div>
+            <div class="map-legend-item">
+              <div class="map-legend-swatch" style="background: #4a8f68"></div>
+              <div>
+                <div class="map-legend-text">Central East</div>
+                <div class="map-legend-states">
+                  Plateau, Nasarawa, Benue, Taraba
+                </div>
+              </div>
+            </div>
+            <div class="map-legend-item">
+              <div class="map-legend-swatch" style="background: #1e4d34"></div>
+              <div>
+                <div class="map-legend-text">South West</div>
+                <div class="map-legend-states">
+                  Lagos, Oyo, Ogun, Osun, Ondo, Ekiti
+                </div>
+              </div>
+            </div>
+            <div class="map-legend-item">
+              <div
+                class="map-legend-swatch"
+                style="background: #2d5a3f; border: 1px dashed #b8860b"
+              ></div>
+              <div>
+                <div class="map-legend-text">Mid West</div>
+                <div class="map-legend-states">Edo, Delta, Bayelsa</div>
+              </div>
+            </div>
+            <div class="map-legend-item">
+              <div
+                class="map-legend-swatch"
+                style="background: #1a3a2a; border: 1px dashed #b8860b"
+              ></div>
+              <div>
+                <div class="map-legend-text">Mid East</div>
+                <div class="map-legend-states">
+                  Anambra, Enugu, Imo, Ebonyi, Anioma, Abia, Rivers
+                </div>
+              </div>
+            </div>
+            <div class="map-legend-item">
+              <div
+                class="map-legend-swatch"
+                style="background: #3d7a55; border: 1px dashed #b8860b"
+              ></div>
+              <div>
+                <div class="map-legend-text">South East</div>
+                <div class="map-legend-states">Cross River, Akwa Ibom</div>
+              </div>
+            </div>
+            <div class="map-legend-item">
+              <div
+                class="map-legend-swatch"
+                style="background: #b8860b; border-radius: 50%"
+              ></div>
+              <div>
+                <div class="map-legend-text">FCT Abuja</div>
+                <div class="map-legend-states">Neutral federal territory</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="footnote">
+          Note: Map is schematic and illustrative. The FCT (Abuja) shall remain
+          under direct federal administration and shall not belong to any
+          constitutional region.
+        </p>
+      </div>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- Distribution of Powers -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter II</span>
+        <h1 class="chapter-title">Distribution of Powers</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        The constitutional division of powers between the Federal Government and
+        the regions shall be clearly delineated, justiciable, and protected from
+        encroachment by either level of government. The Federal Government
+        retains exclusive sovereign functions, while regions exercise
+        substantial autonomous authority over domestic affairs.
+      </p>
+
+      <div class="powers-grid">
+        <div class="powers-card federal">
+          <div class="powers-card-title">Federal Exclusive Powers</div>
+          <ul>
+            <li>National defence and armed forces</li>
+            <li>Foreign policy and diplomatic representation</li>
+            <li>Intelligence coordination and national security</li>
+            <li>Monetary policy and currency (Central Bank)</li>
+            <li>Customs, excise, and import duties</li>
+            <li>Federal transportation corridors and aviation</li>
+            <li>All national law enforcement institutions</li>
+            <li>Immigration and citizenship</li>
+            <li>Nuclear energy and strategic minerals</li>
+            <li>Maritime jurisdiction and international waters</li>
+          </ul>
+        </div>
+        <div class="powers-card regional">
+          <div class="powers-card-title">Regional & State Powers</div>
+          <ul>
+            <li>Education (primary through tertiary)</li>
+            <li>Healthcare systems and public health</li>
+            <li>Housing and urban development</li>
+            <li>Agriculture and food security</li>
+            <li>Industrial development and regional zones</li>
+            <li>Regional infrastructure and roads</li>
+            <li>Land administration and planning</li>
+            <li>Regional environmental regulation</li>
+            <li>Tourism and cultural heritage</li>
+            <li>Regional courts and civil dispute resolution</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">Constitutional Principle</span>
+        <p>
+          Where any ambiguity exists as to whether a matter falls within federal
+          or regional jurisdiction, the Constitutional Supreme Court shall
+          adjudicate based on the principle of subsidiarity — that governance
+          should occur at the closest practicable level to the citizen.
+        </p>
+      </div>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- Fiscal Federalism -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter III</span>
+        <h1 class="chapter-title">Fiscal Federalism</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        The federation shall operate a decentralized fiscal structure in which
+        regions and states retain the majority of internally generated revenue
+        and natural resource revenue. This corrects the historic dysfunction of
+        excessive centralization, wherein the Federal Government has long
+        controlled the majority of national revenue while regions remained
+        fiscally dependent and developmentally constrained.
+      </p>
+
+      <!-- Fiscal Bar Chart -->
+      <div class="fiscal-visual">
+        <div class="fiscal-title">
+          Revenue Distribution by Phase — Regional vs Federal Share
+        </div>
+        <div class="fiscal-bars">
+          <div class="fiscal-bar-group">
+            <div class="fiscal-bar-wrap">
+              <div class="fiscal-bar bar-regional" style="height: 91px">
+                <span class="bar-label" style="color: var(--green-mid)"
+                  >65%</span
+                >
+              </div>
+              <div class="fiscal-bar bar-federal" style="height: 49px">
+                <span class="bar-label" style="color: var(--gold)">35%</span>
+              </div>
+            </div>
+            <div class="fiscal-phase-label">
+              Phase I<br /><span style="color: #aaa; font-size: 9px"
+                >Years 1–7</span
+              >
+            </div>
+          </div>
+
+          <div class="fiscal-bar-group">
+            <div class="fiscal-bar-wrap">
+              <div class="fiscal-bar bar-regional" style="height: 98px">
+                <span class="bar-label" style="color: var(--green-mid)"
+                  >70%</span
+                >
+              </div>
+              <div class="fiscal-bar bar-federal" style="height: 42px">
+                <span class="bar-label" style="color: var(--gold)">30%</span>
+              </div>
+            </div>
+            <div class="fiscal-phase-label">
+              Phase II<br /><span style="color: #aaa; font-size: 9px"
+                >Years 8–14</span
+              >
+            </div>
+          </div>
+
+          <div class="fiscal-bar-group">
+            <div class="fiscal-bar-wrap">
+              <div class="fiscal-bar bar-regional" style="height: 105px">
+                <span class="bar-label" style="color: var(--green-mid)"
+                  >75%</span
+                >
+              </div>
+              <div class="fiscal-bar bar-federal" style="height: 35px">
+                <span class="bar-label" style="color: var(--gold)">25%</span>
+              </div>
+            </div>
+            <div class="fiscal-phase-label">
+              Phase III<br /><span style="color: #aaa; font-size: 9px"
+                >Year 15+</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="fiscal-legend">
+          <div class="legend-item">
+            <div
+              class="legend-swatch"
+              style="background: var(--green-mid)"
+            ></div>
+            Regional &amp; State Share
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background: var(--gold)"></div>
+            Federal Government Share
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Federal Revenue Sources</div>
+      </div>
+      <p>
+        The Federal Government shall maintain constitutionally protected access
+        to strategic national revenue streams including customs duties, defense
+        levies, portions of corporate taxation, aviation fees, maritime duties,
+        federal infrastructure bonds, and national security appropriations.
+        These sources shall remain inalienable from federal jurisdiction.
+      </p>
+
+      <div class="section-header">
+        <div class="section-title">Regional Revenue Sources</div>
+      </div>
+      <p>
+        Regions and states may independently manage land taxes, sales taxes,
+        resource royalties, local industrial taxes, business registration
+        revenue, and internally generated taxation mechanisms consistent with
+        constitutional law. Regions shall retain the majority of natural
+        resource revenues extracted from their territory.
+      </p>
+
+      <div class="section-header">
+        <div class="section-title">
+          Natural Resource Revenue — Derivation Formula
+        </div>
+      </div>
+      <p>
+        At least 50% of revenues derived from natural resources — including
+        petroleum, gas, solid minerals, and agricultural commodities — shall be
+        returned to the region of origin as derivation revenue. The remaining
+        portion shall flow into the Federal Distribution Pool and be allocated
+        by the Revenue Mobilization Allocation and Fiscal Commission (RMAFC)
+        according to constitutionally established formulae. No derivation
+        percentage shall be reduced without a constitutional amendment approved
+        by the Council of Regions.
+      </p>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- PRESIDENCY -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter IV</span>
+        <h1 class="chapter-title">
+          The Presidency &amp; Presidential Rotation
+        </h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        The Presidency shall rotate sequentially among the eight constitutional
+        regions. This mechanism ensures that no single region or ethnoreligious
+        bloc can permanently dominate the federal executive. It also
+        incentivizes regions to invest in the quality of their governance,
+        knowing their citizens will ascend to the highest office in turn.
+      </p>
+
+      <h2 class="article-title">
+        <em>Article A</em> — The Constitutional Rotation Order
+      </h2>
+
+      <div class="rotation-timeline">
+        <div class="rotation-track">
+          <div class="rotation-item">
+            <div class="rotation-item-left"><span>Turn 1</span></div>
+            <div class="rotation-center">
+              <div class="rotation-dot"></div>
+              <div class="rotation-line"></div>
+            </div>
+            <div class="rotation-item-right">
+              <span class="rotation-num">01</span>
+              <div>
+                <strong>Mid East Region</strong>
+                <div class="rotation-states">
+                  Anambra, Enugu, Imo, Ebonyi, Anioma, Abia, Rivers
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rotation-item">
+            <div class="rotation-item-left"><span>Turn 2</span></div>
+            <div class="rotation-center">
+              <div class="rotation-dot"></div>
+              <div class="rotation-line"></div>
+            </div>
+            <div class="rotation-item-right">
+              <span class="rotation-num">02</span>
+              <div>
+                <strong>Central East Region</strong>
+                <div class="rotation-states">
+                  Nasarawa, Plateau, Taraba, Benue
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rotation-item">
+            <div class="rotation-item-left"><span>Turn 3</span></div>
+            <div class="rotation-center">
+              <div class="rotation-dot"></div>
+              <div class="rotation-line"></div>
+            </div>
+            <div class="rotation-item-right">
+              <span class="rotation-num">03</span>
+              <div>
+                <strong>Mid West Region</strong>
+                <div class="rotation-states">Edo, Delta, Bayelsa</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rotation-item">
+            <div class="rotation-item-left"><span>Turn 4</span></div>
+            <div class="rotation-center">
+              <div class="rotation-dot"></div>
+              <div class="rotation-line"></div>
+            </div>
+            <div class="rotation-item-right">
+              <span class="rotation-num">04</span>
+              <div>
+                <strong>Central West Region</strong>
+                <div class="rotation-states">Kwara, Niger, Kogi</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rotation-item">
+            <div class="rotation-item-left"><span>Turn 5</span></div>
+            <div class="rotation-center">
+              <div class="rotation-dot"></div>
+              <div class="rotation-line"></div>
+            </div>
+            <div class="rotation-item-right">
+              <span class="rotation-num">05</span>
+              <div>
+                <strong>South East Region</strong>
+                <div class="rotation-states">Cross River, Akwa Ibom</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rotation-item">
+            <div class="rotation-item-left"><span>Turn 6</span></div>
+            <div class="rotation-center">
+              <div class="rotation-dot"></div>
+              <div class="rotation-line"></div>
+            </div>
+            <div class="rotation-item-right">
+              <span class="rotation-num">06</span>
+              <div>
+                <strong>North East Region</strong>
+                <div class="rotation-states">
+                  Bauchi, Gombe, Yobe, Borno, Adamawa
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rotation-item">
+            <div class="rotation-item-left"><span>Turn 7</span></div>
+            <div class="rotation-center">
+              <div class="rotation-dot"></div>
+              <div class="rotation-line"></div>
+            </div>
+            <div class="rotation-item-right">
+              <span class="rotation-num">07</span>
+              <div>
+                <strong>South West Region</strong>
+                <div class="rotation-states">
+                  Lagos, Oyo, Ekiti, Osun, Ondo, Ogun
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rotation-item">
+            <div class="rotation-item-left"><span>Turn 8</span></div>
+            <div class="rotation-center">
+              <div class="rotation-dot"></div>
+            </div>
+            <div class="rotation-item-right">
+              <span class="rotation-num">08</span>
+              <div>
+                <strong>North West Region</strong>
+                <div class="rotation-states">
+                  Kebbi, Sokoto, Zamfara, Katsina, Kaduna, Kano, Jigawa
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        After the eighth region completes its turn, the rotation shall restart
+        from Region 1. This sequence shall be immutable except by a
+        supermajority constitutional amendment requiring approval of at least
+        six of the eight regions and a two-thirds majority in both chambers. The
+        rotation order shall be publicly recorded in a Constitutional Rotation
+        Register maintained by the Constitutional Supreme Court and published in
+        the Federal Gazette at the commencement of each electoral cycle.
+      </p>
+
+      <h2 class="article-title">
+        <em>Article B</em> — Eligibility Requirements
+      </h2>
+      <p>
+        To stand as a presidential candidate in a rotation election, an
+        individual must satisfy all of the following conditions simultaneously:
+      </p>
+      <ol>
+        <li>Be a citizen of Nigeria by birth.</li>
+        <li>Be at least 40 years of age at the time of nomination.</li>
+        <li>
+          Be domiciled in, and hold verifiable ancestral ties to, the
+          constitutionally designated rotation region.
+        </li>
+        <li>
+          Have held no dual citizenship with any foreign state within the
+          preceding ten years.
+        </li>
+        <li>
+          Have no unresolved criminal indictment, conviction, or finding of
+          constitutional misconduct.
+        </li>
+        <li>
+          Have filed complete, publicly accessible financial disclosure
+          statements for the preceding five years.
+        </li>
+        <li>
+          Have obtained the nomination of a constitutionally qualified
+          registered political party.
+        </li>
+      </ol>
+      <p>
+        Eligibility shall be determined and certified by INEC in conjunction
+        with the Constitutional Supreme Court. No candidate may be admitted to
+        the ballot without dual certification from both institutions.
+      </p>
+
+      <h2 class="article-title">
+        <em>Article C</em> — Domicile &amp; Ancestral Ties (Defined)
+      </h2>
+      <p>
+        Because candidacy is restricted to the rotation region, both domicile
+        and ancestral ties must be constitutionally precise to prevent gaming:
+      </p>
+      <ul>
+        <li>
+          <strong>Domicile</strong> requires a continuous primary residence of
+          at least five years in the region, verified through voter
+          registration, tax filings, utility records, and civil registration
+          data.
+        </li>
+        <li>
+          <strong>Ancestral ties</strong> require proof that at least one parent
+          or both grandparents on either side were indigenes of a state within
+          the rotation region, verified through civil registration records,
+          community attestation, and state government certification. Claims are
+          reviewed by an independent Regional Eligibility Panel of three
+          jurists.
+        </li>
+        <li>
+          Fraudulent claims result in permanent disqualification and criminal
+          prosecution.
+        </li>
+      </ul>
+
+      <h2 class="article-title">
+        <em>Article D</em> — Nomination Process Timeline
+      </h2>
+      <ol>
+        <li>
+          <strong>−18 months:</strong> INEC formally announces the designated
+          rotation region.
+        </li>
+        <li>
+          <strong>−12 months:</strong> Political parties submit internal
+          nomination processes to INEC for oversight.
+        </li>
+        <li>
+          <strong>−9 months:</strong> All party primaries conducted under INEC
+          observation and independent monitoring.
+        </li>
+        <li>
+          <strong>−6 months:</strong> INEC certifies final list of eligible
+          candidates.
+        </li>
+        <li>
+          <strong>−5 months:</strong> Any eligibility challenges filed with the
+          Constitutional Supreme Court.
+        </li>
+        <li>
+          <strong>−3.5 months:</strong> Constitutional Supreme Court resolves
+          all eligibility disputes (45 days).
+        </li>
+        <li>
+          <strong>Election Day:</strong> Vote held exclusively within the
+          designated rotation region's electorate.
+        </li>
+      </ol>
+
+      <h2 class="article-title">
+        <em>Article E</em> — Failure Scenarios &amp; Contingency Protocols
+      </h2>
+      <p>
+        The Constitution must provide an unambiguous mechanism for every
+        foreseeable failure scenario:
+      </p>
+
+      <div class="scenario-grid">
+        <div class="scenario-card" data-num="Scenario 1">
+          <h4>No Eligible Candidate Emerges</h4>
+          <p>
+            INEC declares a Regional Candidacy Emergency. A Special Eligibility
+            Review Panel convenes within 14 days. If modest constitutional
+            relaxation (e.g. domicile reduced to 3 years) yields a candidate,
+            election proceeds. If not, the Constitutional Supreme Court declares
+            Rotation Suspension and the adjacent region provides candidates for
+            that cycle. The suspended region retains its position in the
+            sequence.
+          </p>
+        </div>
+        <div class="scenario-card" data-num="Scenario 2">
+          <h4>Candidates Disqualified Post-Certification</h4>
+          <p>
+            INEC re-opens a 30-day emergency nomination window within the
+            eligible region. If this window yields no viable candidate, Rotation
+            Suspension protocol applies and the election opens to the adjacent
+            region as above.
+          </p>
+        </div>
+        <div class="scenario-card" data-num="Scenario 3">
+          <h4>President Dies, Resigns, or Is Removed</h4>
+          <p>
+            The Vice President (also from the rotation region) assumes the
+            Presidency. If the VP is also incapacitated, the Speaker serves as
+            Acting President for up to 90 days, during which a Special Election
+            is held within the rotation region. A partial term under two years
+            does not count as a full term for re-election purposes. The rotation
+            sequence is unaffected.
+          </p>
+        </div>
+        <div class="scenario-card" data-num="Scenario 4">
+          <h4>Region Boycotts or Obstructs</h4>
+          <p>
+            The Constitutional Supreme Court issues a compliance order within 7
+            days. Non-compliance constitutes a constitutional crisis. The
+            Federal Legislature may by a two-thirds majority in both chambers
+            authorise INEC to conduct direct federal nomination proceedings
+            within the obstruction region, bypassing regional party structures
+            for that cycle. Orchestrators face permanent disqualification from
+            federal office.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="article-title">
+        <em>Articles F–I</em> — Vice President, Term Limits, Anti-Manipulation
+        &amp; Transition
+      </h2>
+      <ul>
+        <li>
+          The Vice President must originate from the same rotation region as the
+          President. The Council of Regions may reject a nominee by majority
+          vote; the President must submit a new nominee within 21 days.
+        </li>
+        <li>
+          A President may serve a maximum of two four-year terms. Re-election
+          requires independent INVA verification of at least 70% KPI benchmark
+          completion.
+        </li>
+        <li>
+          The rotation sequence may not be amended by ordinary legislation.
+          Attempts to extend tenure or suppress rotation trigger immediate
+          impeachment and criminal prosecution for constitutional subversion.
+        </li>
+        <li>
+          A mandatory 60-day Presidential Transition Period is constitutionally
+          mandated, supervised by a Presidential Transition Commission overseen
+          by the Chief Justice. Non-cooperation constitutes constitutional
+          misconduct.
+        </li>
+      </ul>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- KPI GOVERNANCE -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter V</span>
+        <h1 class="chapter-title">National Performance Governance System</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        At the beginning of each administration, measurable governance KPIs
+        shall be constitutionally established, independently verified, and
+        publicly reported. This mechanism transforms governance from a political
+        promise system into an accountable performance contract between the
+        President and the Nigerian people. Failure to achieve minimum benchmarks
+        is not merely a political failing — it is a constitutional disqualifier
+        for re-election.
+      </p>
+
+      <table class="kpi-table">
+        <thead>
+          <tr>
+            <th>KPI Domain</th>
+            <th>Example Benchmark</th>
+            <th>Verification Body</th>
+            <th>Review Cycle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="kpi-tag">Security</span></td>
+            <td>
+              Reduction in insurgency incidents, improved border security
+              metrics
+            </td>
+            <td>INVA + Defence Intelligence</td>
+            <td>Quarterly</td>
+          </tr>
+          <tr>
+            <td><span class="kpi-tag">Infrastructure</span></td>
+            <td>Km of roads completed, power generation capacity added</td>
+            <td>INVA + National Infrastructure Commission</td>
+            <td>Quarterly</td>
+          </tr>
+          <tr>
+            <td><span class="kpi-tag">Healthcare</span></td>
+            <td>
+              Maternal mortality rate, immunization coverage, hospital bed
+              ratios
+            </td>
+            <td>INVA + Ministry of Health Audit</td>
+            <td>Bi-annual</td>
+          </tr>
+          <tr>
+            <td><span class="kpi-tag">Economy</span></td>
+            <td>GDP growth rate, unemployment rate, inflation targets</td>
+            <td>INVA + National Statistics Commission</td>
+            <td>Quarterly</td>
+          </tr>
+          <tr>
+            <td><span class="kpi-tag">Energy</span></td>
+            <td>% of households with reliable electricity access</td>
+            <td>INVA + Energy Regulatory Commission</td>
+            <td>Bi-annual</td>
+          </tr>
+          <tr>
+            <td><span class="kpi-tag">Anti-Corruption</span></td>
+            <td>
+              Transparency International score improvement, prosecutions secured
+            </td>
+            <td>INVA + ICPC + EFCC</td>
+            <td>Annual</td>
+          </tr>
+          <tr>
+            <td><span class="kpi-tag">Education</span></td>
+            <td>
+              Literacy rates, school enrollment ratios, tertiary completion
+            </td>
+            <td>INVA + National Education Commission</td>
+            <td>Annual</td>
+          </tr>
+          <tr>
+            <td><span class="kpi-tag">Digitisation</span></td>
+            <td>
+              % of federal services accessible online, broadband penetration
+            </td>
+            <td>INVA + Digital Economy Commission</td>
+            <td>Annual</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <span class="callout-label"
+          >Independent National Verification Authority (INVA)</span
+        >
+        <p>
+          A constitutionally protected INVA shall audit all federal performance
+          metrics, verify infrastructure completion, validate national
+          statistics, monitor procurement integrity, and publish quarterly
+          governance reports. The INVA shall be independent of the Executive,
+          Legislature, and all political parties, and shall report directly to
+          the Constitutional Supreme Court. Its findings are legally binding on
+          re-election eligibility determinations.
+        </p>
+      </div>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- LAW ENFORCEMENT -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter VI</span>
+        <h1 class="chapter-title">Federal Law Enforcement Structure</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        All policing and law enforcement institutions shall remain exclusively
+        federal in authority, command, recruitment standards, intelligence
+        coordination, and operational oversight. This is a foundational
+        constitutional commitment — not merely administrative policy — grounded
+        in Nigeria's specific history of regional militarization, political
+        manipulation of armed forces, and the dangers of interstate security
+        competition.
+      </p>
+
+      <div class="section-header">
+        <div class="section-title">Rationale for Centralized Policing</div>
+      </div>
+      <p>
+        The experience of regional and state police structures in federal
+        systems around the world, and in Nigeria's own past, demonstrates that
+        decentralized armed authority creates dangerous incentives: governors
+        weaponize police against political opponents; regional armies form the
+        nucleus of secessionist forces; ethnic militias gain quasi-official
+        status. Nigeria's unity depends on a single, professionally neutral,
+        nationally accountable law enforcement structure.
+      </p>
+
+      <div class="section-header">
+        <div class="section-title">Federal Policing Architecture</div>
+      </div>
+      <ul>
+        <li>
+          <strong>Nigeria Police Force (NPF):</strong> The sole national
+          civilian police authority, federally commanded, with operational
+          commands in all states and regions.
+        </li>
+        <li>
+          <strong
+            >Federal Intelligence and Investigative Service (FIIS):</strong
+          >
+          Responsible for domestic intelligence, counter-terrorism, and serious
+          organised crime investigations.
+        </li>
+        <li>
+          <strong>Economic and Financial Crimes Commission (EFCC):</strong>
+          Constitutional anti-corruption and financial crimes enforcement,
+          reporting to the Attorney-General.
+        </li>
+        <li>
+          <strong>Independent Corrupt Practices Commission (ICPC):</strong>
+          Public sector corruption enforcement, constitutionally independent of
+          the Executive.
+        </li>
+        <li>
+          <strong>Nigerian Correctional Service:</strong> Federal management of
+          all custodial institutions.
+        </li>
+      </ul>
+
+      <div class="section-header">
+        <div class="section-title">Community Policing Integration</div>
+      </div>
+      <p>
+        While armed policing authority remains exclusively federal, the
+        Constitution permits Community Policing Advisory Boards (CPABs) to be
+        established at local government level. These boards advise the regional
+        NPF operational commands on community-specific security needs, assist in
+        intelligence gathering, and facilitate civilian-police cooperation.
+        CPABs possess no executive authority, carry no arms, and cannot issue
+        orders to NPF officers.
+      </p>
+
+      <div class="section-header">
+        <div class="section-title">Accountability and Reform</div>
+      </div>
+      <p>
+        A constitutionally established Police Service Commission shall oversee
+        all NPF appointments above the rank of Assistant Superintendent, ensure
+        merit-based promotion, investigate misconduct, and publish annual
+        institutional performance reports. The KPI governance system shall
+        include specific police modernization and accountability benchmarks
+        within its quarterly review cycle.
+      </p>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- LEGISLATURE -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter VII</span>
+        <h1 class="chapter-title">The Federal Legislature</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        The legislative authority of the Federal Republic of Nigeria shall be
+        vested in a bicameral Federal Legislature. The two-chamber design
+        resolves the fundamental tension in all diverse federations: how to
+        ensure both democratic proportionality and the protection of smaller
+        constituent units from domination by larger ones.
+      </p>
+
+      <div class="chambers-compare">
+        <div class="chamber chamber-a">
+          <div class="chamber-name">Lower Chamber</div>
+          <div class="chamber-full-name">House of Citizens</div>
+          <div class="chamber-detail">
+            Directly elected by citizens. Proportional representation based on
+            verified population. Primary fiscal and legislative chamber.
+            Originates all federal budgets. Exercises oversight through
+            investigative committees, ministerial summons, and public hearings.
+          </div>
+        </div>
+        <div class="chamber chamber-b">
+          <div class="chamber-name">Upper Chamber</div>
+          <div class="chamber-full-name">Council of Regions</div>
+          <div class="chamber-detail">
+            Equal representation for all eight regions regardless of population.
+            Protects regional constitutional interests. Guards against
+            domination of smaller regions by larger population centres.
+            Mandatory approval required for constitutional amendments and major
+            structural legislation.
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">House of Citizens — Powers</div>
+      </div>
+      <ul>
+        <li>Federal taxation and revenue legislation</li>
+        <li>Appropriation and national budget approval</li>
+        <li>
+          Oversight hearings, investigative committees, ministerial summons
+        </li>
+        <li>Confirmation inquiries for senior federal appointments</li>
+        <li>KPI compliance reviews and INVA audit requests</li>
+        <li>Ordinary federal legislation on all concurrent matters</li>
+      </ul>
+
+      <div class="section-header">
+        <div class="section-title">
+          Council of Regions — Powers &amp; Veto Mechanism
+        </div>
+      </div>
+      <ul>
+        <li>
+          Mandatory approval for constitutional amendments, boundary changes,
+          and emergency declarations beyond constitutional time limits
+        </li>
+        <li>
+          Approval of changes to presidential rotation order and resource
+          allocation formulae
+        </li>
+        <li>
+          Suspension of federal legislation deemed harmful to regional
+          constitutional balance (triggering judicial review and renegotiation)
+        </li>
+        <li>
+          Confirmation of strategic national appointments including INVA
+          leadership, Chief Justice, and Inspector-General of Police
+        </li>
+        <li>
+          Authorisation of federal military deployment during domestic
+          constitutional crises
+        </li>
+      </ul>
+
+      <div class="callout">
+        <span class="callout-label">Legislative Philosophy</span>
+        <p>
+          The Federal Legislature shall operate upon the constitutional
+          principle that population deserves representation, regions deserve
+          protection, and neither majority dominance nor regional obstruction
+          shall undermine the stability of the federation. The bicameral
+          structure exists to balance democracy, federalism, accountability, and
+          national cohesion within a diverse multinational republic.
+        </p>
+      </div>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- JUDICIARY -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter VIII</span>
+        <h1 class="chapter-title">The Judiciary</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        The judicial authority of the Federal Republic shall be vested in an
+        independent constitutional judiciary that serves as the ultimate
+        guardian of the constitutional order — a permanent institutional check
+        on the Executive, the Legislature, and regional governments alike.
+      </p>
+
+      <!-- Hierarchy diagram -->
+      <div class="hierarchy">
+        <div class="hierarchy-level">
+          <div class="hierarchy-box top">
+            <div class="hierarchy-box-title">Constitutional Supreme Court</div>
+            <div class="hierarchy-box-sub">Final constitutional authority</div>
+          </div>
+          <div class="hierarchy-connector"></div>
+        </div>
+        <div class="hierarchy-level">
+          <div class="hierarchy-box mid">
+            <div class="hierarchy-box-title">Federal Court of Appeal</div>
+            <div class="hierarchy-box-sub">
+              Appellate jurisdiction over federal matters
+            </div>
+          </div>
+          <div class="hierarchy-connector"></div>
+        </div>
+        <div class="hierarchy-level">
+          <div class="hierarchy-box lower">
+            <div class="hierarchy-box-title">Federal High Courts</div>
+            <div class="hierarchy-box-sub">
+              Federal matters, constitutional disputes, anti-corruption
+              tribunals
+            </div>
+          </div>
+          <div class="hierarchy-connector"></div>
+        </div>
+        <div class="hierarchy-level">
+          <div class="hierarchy-box base">
+            <div class="hierarchy-box-title">
+              Regional High Courts &amp; Local/Municipal Courts
+            </div>
+            <div class="hierarchy-box-sub">
+              Regional law, civil disputes, first-instance hearings
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Judicial Independence — Core Guarantees</div>
+      </div>
+      <ul>
+        <li>
+          Judicial decisions are binding on all institutions: Federal
+          Government, regions, security agencies, and legislative bodies.
+        </li>
+        <li>
+          No elected official may suspend, ignore, or override a lawful judicial
+          ruling except through constitutional review procedures.
+        </li>
+        <li>
+          Federal judges receive constitutional tenure protections, financial
+          independence from the Executive, and physical security guarantees.
+        </li>
+        <li>
+          Removal of superior court judges requires formal misconduct
+          proceedings, independent review by the NJC, and supermajority approval
+          in both legislative chambers.
+        </li>
+        <li>
+          Intimidation of judges by any security agency constitutes a
+          constitutional crisis triggering automatic legislative intervention.
+        </li>
+      </ul>
+
+      <div class="section-header">
+        <div class="section-title">
+          Constitutional Supreme Court — Exclusive Jurisdiction
+        </div>
+      </div>
+      <ul>
+        <li>
+          Constitutional disputes between branches and between levels of
+          government
+        </li>
+        <li>
+          Presidential eligibility disputes and all rotation system challenges
+        </li>
+        <li>KPI certification disputes and INVA audit integrity challenges</li>
+        <li>
+          Constitutional emergency review and termination of unconstitutional
+          emergency powers
+        </li>
+        <li>
+          Review of federal and regional laws for constitutional compliance
+        </li>
+        <li>
+          Protection of minority rights and civil liberties against government
+          encroachment
+        </li>
+      </ul>
+
+      <div class="section-header">
+        <div class="section-title">Appointment &amp; Regional Balance</div>
+      </div>
+      <p>
+        Judges shall be appointed through a multi-layer process involving the
+        independent National Judicial Commission (NJC), merit review panels,
+        regional participation, public transparency hearings, and confirmation
+        by the Council of Regions. No single region may dominate the upper
+        judiciary. Political party executives and active partisan officials are
+        ineligible for immediate judicial appointment.
+      </p>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- DATA & CENSUS -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter IX</span>
+        <h1 class="chapter-title">National Data &amp; Census System</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        National statistics and census data are constitutionally protected
+        matters of sovereign importance. Nigeria's past census exercises have
+        been marred by manipulation, political pressure, and disputed results.
+        The new constitutional order places national data integrity under
+        independent, multi-source, cross-verified oversight — because accurate
+        data underpins every governance function, from revenue allocation to
+        electoral boundary delimitation.
+      </p>
+
+      <div class="section-header">
+        <div class="section-title">Cross-Verification Architecture</div>
+      </div>
+      <p>
+        Census and demographic data shall be cross-verified through at least six
+        independent data streams to prevent manipulation of any single source:
+      </p>
+      <ol>
+        <li>
+          <strong>Civil registration records</strong> — births, deaths, and
+          marriages registered with state civil registries.
+        </li>
+        <li>
+          <strong>Tax system data</strong> — taxpayer registration records and
+          household tax filings from FIRS.
+        </li>
+        <li>
+          <strong>Voter registration rolls</strong> — INEC's continuously
+          updated voter registration database.
+        </li>
+        <li>
+          <strong>School enrollment records</strong> — primary and secondary
+          enrollment data from state and federal education ministries.
+        </li>
+        <li>
+          <strong>Utility connection records</strong> — electricity, water, and
+          gas connections at household level.
+        </li>
+        <li>
+          <strong>Satellite and remote sensing verification</strong> —
+          independent satellite imagery analysis of settlement density, building
+          footprints, and population movement patterns.
+        </li>
+      </ol>
+      <p>
+        A constitutionally independent National Statistics Commission shall
+        manage, audit, and publish all national data. Any public official who
+        manipulates census or statistical data shall face criminal prosecution
+        and permanent disqualification from public office.
+      </p>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- TRANSPARENCY -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter X</span>
+        <h1 class="chapter-title">Transparency &amp; Citizen Access</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        Citizens shall possess constitutional rights to access public budgets,
+        procurement records, benchmark reports, audit findings, infrastructure
+        verification records, and federal performance dashboards. Transparency
+        is not a policy preference — it is a constitutional right enforceable
+        through the judiciary.
+      </p>
+
+      <div class="access-grid">
+        <div class="access-card">
+          <span class="access-icon">📊</span>
+          <div class="access-card-title">Budget &amp; Finance</div>
+          <p>
+            All federal and regional budgets, expenditure reports, and
+            procurement awards published in real time on a publicly accessible
+            digital portal.
+          </p>
+        </div>
+        <div class="access-card">
+          <span class="access-icon">📋</span>
+          <div class="access-card-title">KPI Reports</div>
+          <p>
+            Quarterly INVA governance reports published within 30 days of each
+            review period. Citizens may challenge data through an independent
+            ombudsman.
+          </p>
+        </div>
+        <div class="access-card">
+          <span class="access-icon">🏗️</span>
+          <div class="access-card-title">Infrastructure</div>
+          <p>
+            Infrastructure completion status, contractor details, and cost data
+            publicly accessible. INVA verification reports published for all
+            major federal projects.
+          </p>
+        </div>
+        <div class="access-card">
+          <span class="access-icon">⚖️</span>
+          <div class="access-card-title">Judicial Proceedings</div>
+          <p>
+            All court rulings, constitutional opinions, and major hearings
+            digitally archived and publicly accessible except in matters of
+            national security.
+          </p>
+        </div>
+        <div class="access-card">
+          <span class="access-icon">🗳️</span>
+          <div class="access-card-title">Legislative Records</div>
+          <p>
+            All legislative proceedings recorded, voting records of legislators
+            made public, and committee reports published within 14 days of
+            conclusion.
+          </p>
+        </div>
+        <div class="access-card">
+          <span class="access-icon">🔍</span>
+          <div class="access-card-title">Anti-Corruption Disclosures</div>
+          <p>
+            Asset declarations of all senior officials, EFCC and ICPC case
+            summaries, and procurement fraud findings published annually.
+          </p>
+        </div>
+      </div>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- ECONOMIC FEDERALISM -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter XI</span>
+        <h1 class="chapter-title">Economic Competitive Federalism</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        Regions shall possess authority to attract investment, establish
+        innovation zones, pursue regional economic specialization, and compete
+        economically within the federation under constitutional protections.
+        This competitive federalism model treats regions as economic actors —
+        incentivizing governance quality, investment climate improvement, and
+        development — rather than passive recipients of federal allocations.
+      </p>
+
+      <div class="section-header">
+        <div class="section-title">Regional Economic Instruments</div>
+      </div>
+      <ul>
+        <li>
+          <strong>Special Economic Zones (SEZs):</strong> Regions may establish
+          SEZs with tailored taxation and regulatory frameworks to attract
+          specific industries.
+        </li>
+        <li>
+          <strong>Regional Development Banks:</strong> Each region may establish
+          or affiliate with a regional development finance institution to fund
+          infrastructure and enterprise.
+        </li>
+        <li>
+          <strong>Public-Private Partnership Authority:</strong> Regional
+          governments may enter binding PPP agreements for infrastructure,
+          utilities, and social services without federal intermediation.
+        </li>
+        <li>
+          <strong>Innovation Districts:</strong> Designated zones within regions
+          may receive preferential federal broadband and digital infrastructure
+          investment in exchange for open-access commitments.
+        </li>
+      </ul>
+
+      <div class="section-header">
+        <div class="section-title">Anti-Monopoly Provisions</div>
+      </div>
+      <p>
+        No region may erect internal trade barriers, tax interstate commerce
+        between regions, or use regional policy to disadvantage businesses from
+        other regions of the federation. The Constitutional Supreme Court may
+        strike down regional economic policies that constitute anti-competitive
+        discrimination against citizens or enterprises of other regions.
+      </p>
+
+      <div class="chapter-divider">
+        <span class="chapter-divider-symbol">◆</span>
+      </div>
+
+      <!-- TRANSITIONAL ARRANGEMENTS -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter XII</span>
+        <h1 class="chapter-title">Transitional Arrangements</h1>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>
+        The restructuring process shall occur gradually over a 10–20 year
+        transition period with phased revenue decentralization, institutional
+        reorganization, debt stabilization planning, and national transition
+        safeguards. No constitutional transformation of this magnitude can
+        succeed if implemented overnight — sequencing and stability management
+        are themselves constitutional obligations.
+      </p>
+
+      <div class="transition-phases">
+        <div class="transition-phase">
+          <span class="phase-years">Years 1–5</span>
+          <span class="phase-name">Foundation Phase</span>
+          <p class="phase-detail">
+            Constitutional ratification. Regional governance structures
+            established. INVA, NJC, and INEC reformed and constitutionally
+            entrenched. Revenue split at 65/35. First rotation election held.
+          </p>
+        </div>
+        <div class="transition-phase">
+          <span class="phase-years">Years 6–12</span>
+          <span class="phase-name">Consolidation Phase</span>
+          <p class="phase-detail">
+            Regional capacity building. KPI system fully operational. Judicial
+            reform implementation. Revenue split moves to 70/30. Second and
+            third rotation cycles completed.
+          </p>
+        </div>
+        <div class="transition-phase">
+          <span class="phase-years">Years 13+</span>
+          <span class="phase-name">Maturity Phase</span>
+          <p class="phase-detail">
+            Full regional fiscal autonomy. Revenue split at 75/25.
+            Constitutional review process opens to assess performance. All
+            transition commissions dissolved or absorbed into permanent
+            institutions.
+          </p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Transition Safeguards</div>
+      </div>
+      <ul>
+        <li>
+          A National Transition Council, composed of representatives from all
+          eight regions and chaired by the Chief Justice, shall oversee the
+          transition process and report annually to the Federal Legislature.
+        </li>
+        <li>
+          Existing federal employees shall be absorbed into the new
+          institutional architecture without mass redundancy, with a Regional
+          Staffing Commission managing reallocation.
+        </li>
+        <li>
+          All international treaty obligations of the existing Federal
+          Government shall remain binding on the restructured federation.
+        </li>
+        <li>
+          National debt accrued prior to ratification shall remain the shared
+          liability of the federation, with regional contributions determined by
+          the revenue allocation formula in force at the time of restructuring.
+        </li>
+      </ul>
+    </div>
+    <!-- end .page -->
+
+    <!-- CONCLUSION -->
+    <div class="conclusion">
+      <div class="conclusion-quote">
+        "This constitutional framework seeks to create a Nigeria where
+        governance is measurable, federal power is accountable, regions are
+        economically competitive, security institutions remain nationally
+        unified, and institutions are stronger than personalities."
+      </div>
+      <div class="conclusion-rule"></div>
+      <div class="conclusion-note">
+        Draft Framework Document — Federal Republic of Nigeria
+      </div>
+    </div>
+  </body>
+</html>
